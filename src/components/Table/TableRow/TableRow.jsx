@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./TableRow.module.scss";
 import classNames from 'classnames'
+import {stringCutter} from "../../../utils/stringCutter";
 
 const TableRow = (props) => {
 
@@ -10,7 +11,7 @@ const TableRow = (props) => {
         30 сентября
       </div>
       <div className={classNames(classes.cell, classes.themeCell)}>
-        {stringCutter('Здесь будет просто огромная тема, которую нужно было бы обрезать на самом деле')}
+        {stringCutter('Здесь будет просто огромная тема, которую нужно было бы обрезать на самом деле', 45)}
       </div>
       <div className={classes.cell}>
         Статус
@@ -21,14 +22,5 @@ const TableRow = (props) => {
 
 export default TableRow;
 
-
-function stringCutter (str) {
-  const size = 47
-
-  if (str.length > size) {
-    return str.slice(0, size) + '...'
-  }
-  return str
-}
 
 

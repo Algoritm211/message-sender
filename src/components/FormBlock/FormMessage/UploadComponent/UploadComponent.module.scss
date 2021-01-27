@@ -1,0 +1,19 @@
+.fileInput {
+  width: 208px;
+  color: #0055FB;
+  cursor: pointer;
+  margin-bottom: 20px;
+  i {
+    margin-right: 6px;
+  }
+}
+
+
+.dragAndDrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px dashed #CCCCCC;
+  border-radius: 5px;
+}
