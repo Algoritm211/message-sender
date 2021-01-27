@@ -1,0 +1,23 @@
+
+$main-row-color: #666464;
+
+.tableRow {
+  display: flex;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+
+  &.main {
+    border-bottom: 1px solid $main-row-color;
+    div {
+      color: $main-row-color;
+    }
+  }
+
+  .cell {
+    width: 110px;
+  }
+
+  .themeCell {
+    width: 520px;
+  }
+}
