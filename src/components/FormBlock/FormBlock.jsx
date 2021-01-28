@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './FormBlock.module.scss'
 import FormMessage from "./FormMessage/FormMessage";
 
 const FormBlock = () => {
+
+
   return (
-    <div className={classes.formBlock}>
+    <div id={'dropzone'} className={classes.formBlock}>
       <FormMessage />
     </div>
   );

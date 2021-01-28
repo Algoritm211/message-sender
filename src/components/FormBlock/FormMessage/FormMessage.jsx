@@ -1,7 +1,6 @@
-import React, {useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useFormik} from "formik";
 import classes from './FormMessage.module.scss'
-import * as yup from 'yup'
 import classNames from 'classnames'
 import FormInput from "./FormInput/FormInput";
 import {stringCutter} from "../../../utils/stringCutter";
@@ -9,28 +8,6 @@ import UploadComponent from "./UploadComponent/UploadComponent";
 
 const FormMessage = () => {
 
-  const validationSchema = yup.object({
-    firstNameFrom: yup
-      .string('Введите имя отправителя')
-      .required('Это поле обязательно для заполнения'),
-    firstNameTo: yup
-      .string('Введите имя получателя')
-      .required('Это поле обязательно для заполнения'),
-    emailFrom: yup
-      .string('Введите почту отправителя')
-      .email('Введите корректный email-адрес')
-      .required('Это поле обязательно для заполнения'),
-    emailTo: yup
-      .string('Введите почту получателя')
-      .email('Введите корректный email-адрес')
-      .required('Это поле обязательно для заполнения'),
-    emailTopic: yup
-      .string('Введите тему письма')
-      .required('Это поле обязательно для заполнения'),
-    message: yup
-      .string('Введите сообщение')
-      .required('Это поле обязательно для заполнения'),
-  })
   const formik = useFormik({
     initialValues: {
       firstNameFrom: '',
@@ -39,14 +16,20 @@ const FormMessage = () => {
       emailTo: '',
       emailTopic: '',
       message: '',
-      files: null,
+      files: [],
     },
     // validationSchema: validationSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values)
     },
   });
 
+  const onDeleteFile = (path) => {
+    const filteredFilesWithoutDelete = formik.values.files.filter(file => {
+      return file.path !== path
+    })
+    formik.setFieldValue('files', filteredFilesWithoutDelete)
+  }
 
   return (
     <div>
@@ -101,7 +84,7 @@ const FormMessage = () => {
           {formik.values.files
           &&
           formik.values.files.map((file, index) => {
-            return <FileBlock file={file} key={index}/>
+            return <FileBlock file={file} key={index} onDelete={() => onDeleteFile(file.path)}/>
           })
           }
         </div>
@@ -120,8 +103,7 @@ const FormMessage = () => {
 export default FormMessage;
 
 
-const FileBlock = (file) => {
-
+const FileBlock = (props) => {
 
   return (
     <div className={classes.fileBlock}>
@@ -129,9 +111,9 @@ const FileBlock = (file) => {
         <i className="fas fa-paperclip"></i>
       </div>
       <div>
-        {stringCutter(file.file.name, 15)}
+        {stringCutter(props.file.name, 15)}
       </div>
-      <div className={classes.deleteButton}>
+      <div className={classes.deleteButton} onClick={props.onDelete}>
         <i className="fas fa-trash"></i> Удалить
       </div>
     </div>

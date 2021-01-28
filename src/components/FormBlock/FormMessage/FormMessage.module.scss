@@ -1,7 +1,6 @@
 
 .formMessage {
   color: #777575;
-  position: relative;
 }
 
 %inputContainer {
@@ -104,9 +103,10 @@ input {
   }
 
   .deleteButton {
+    cursor: pointer;
+    color: #FF6666;
     i {
       font-size: 15px;
     }
-    color: #FF6666;
   }
 }
