@@ -19,6 +19,6 @@ export const validationSchema = yup.object({
     .string('Введите тему письма')
     .required('Это поле обязательно для заполнения'),
   message: yup
-    .string('Введите сообщение')
-    .required('Это поле обязательно для заполнения'),
+    .string('Введите сообщение'),
+  files: yup.mixed()
 })

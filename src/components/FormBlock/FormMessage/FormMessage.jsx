@@ -5,8 +5,13 @@ import classNames from 'classnames'
 import FormInput from "./FormInput/FormInput";
 import {stringCutter} from "../../../utils/stringCutter";
 import UploadComponent from "./UploadComponent/UploadComponent";
+import {validationSchema} from "./ValidationFormMessage";
+import {useDispatch} from "react-redux";
+import {addNewMessage} from "../../../redux/sendForm-reducer";
 
 const FormMessage = () => {
+
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -18,9 +23,9 @@ const FormMessage = () => {
       message: '',
       files: [],
     },
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: values => {
-      console.log(values)
+      dispatch(addNewMessage(values))
     },
   });
 
