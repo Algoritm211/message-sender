@@ -12,21 +12,18 @@ const Table = () => {
       <TableRow message={message} key={message.id}/>
     )
   })
-
-
+  
   const headerState = {date: 'Дата', emailTopic: 'Тема', status: 'Статус'}
   return (
     <div className={classes.table}>
       <h3>Отправленные сообщения</h3>
       {messages.length === 0
         ? <span>Сообщения еще не отправлялись</span>
-
         : <React.Fragment>
           <TableRow main={true} message={headerState}/>
           {tableRowsBlock}
         </React.Fragment>
       }
-
     </div>
   );
 }

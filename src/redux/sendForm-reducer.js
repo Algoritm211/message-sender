@@ -80,7 +80,9 @@ export const addNewMessage = (messageObj) => async (dispatch) => {
   messageObj.id = Date.now()
   messageObj.date = new Date().toString().slice(4, 15)
   dispatch(actions.setMessage(messageObj))
+  dispatch(actions.toggleLoading(true))
   setTimeout(() => {
     dispatch(actions.messageSuccessfulSent(messageObj.id))
+    dispatch(actions.toggleLoading(false))
   }, 3000)
 }

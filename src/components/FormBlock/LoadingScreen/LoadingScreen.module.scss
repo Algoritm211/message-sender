@@ -1,0 +1,15 @@
+
+
+.loadingScreen {
+  width: 800px;
+  height: 320px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  margin: 20px auto 50px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
